@@ -5,7 +5,8 @@ using UnityEngine;
 public class RelayRaceScript : MonoBehaviour
 {
     [SerializeField] private Transform[] bolls;
-    [SerializeField] private Transform[] points;
+    //[SerializeField] private Transform[] points;
+    [SerializeField] private Vector3[] points;
     [SerializeField] private Transform childTransform;
     [SerializeField] private float speed;
 
@@ -25,7 +26,7 @@ public class RelayRaceScript : MonoBehaviour
     {
         if (points.Length != 0)
         {
-            target = points[curentPoint].position;
+            target = points[curentPoint];
         }
 
         if (bolls.Length != 0)
@@ -47,7 +48,7 @@ public class RelayRaceScript : MonoBehaviour
         if (curentBollTransform.position == target)
         {
 
-            if (target == points[curentPoint].position)
+            if (target == points[curentPoint])
             {
                 curentBollActiv++;
                 curentPoint++;
@@ -65,17 +66,10 @@ public class RelayRaceScript : MonoBehaviour
                 Debug.Log(curentBollActiv);
 
                 curentBollTransform = bolls[curentBollActiv];
-                target = points[curentPoint].position;
+                target = points[curentPoint];
                 childTransform.SetParent(curentBollTransform);
+                childTransform.position = new Vector3(curentBollTransform.position.x, curentBollTransform.position.y + 2f, curentBollTransform.position.z);
             }
-
-            
-
-
         }
-
-
-
-
     }
 }

@@ -5,7 +5,8 @@ using UnityEngine;
 public class BackwardMoveScript : MonoBehaviour
 {
   
-    [SerializeField] private Transform[] targetPoint;
+   // [SerializeField] private Transform[] targetPoint;
+    [SerializeField] private Vector3[] targetPoint;
     [SerializeField] private float speed;
     [SerializeField] private bool goMuve;
 
@@ -17,7 +18,7 @@ public class BackwardMoveScript : MonoBehaviour
     {
         if (targetPoint.Length != 0)
         {
-            target = targetPoint[curentNumberPoint].position;
+            target = targetPoint[curentNumberPoint];
         }
 
         checkMuve();
@@ -39,7 +40,7 @@ public class BackwardMoveScript : MonoBehaviour
 
             Debug.Log("Достигли точки назначения");
 
-            if (target == targetPoint[curentNumberPoint].position)
+            if (target == targetPoint[curentNumberPoint])
             {
                 Debug.Log("точка назначения начинает ");
 
@@ -66,7 +67,7 @@ public class BackwardMoveScript : MonoBehaviour
                     forward = true;
                 }
 
-                target = targetPoint[curentNumberPoint].position;
+                target = targetPoint[curentNumberPoint];
             }
 
         }
